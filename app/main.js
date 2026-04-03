@@ -506,6 +506,7 @@ function closeWindows (windowArray) {
 }
 
 function trayIconPath () {
+  const trayIconStyle = settings.get('trayIconStyle')
   const params = {
     paused:
       breakPlanner.isPaused ||
@@ -516,7 +517,7 @@ function trayIconPath () {
     inverted: settings.get('useMonochromeInvertedTrayIcon'),
     darkMode: nativeTheme.shouldUseDarkColors,
     platform: process.platform,
-    trayIconStyle: settings.get('trayIconStyle'),
+    trayIconStyle: process.platform === 'darwin' && trayIconStyle === 'time' ? 'default' : trayIconStyle,
     timeToBreak: minutesRemaining(breakPlanner.timeToNextBreak),
     percentage: breakPlanner.progressPercentage,
     reference: breakPlanner.scheduler.reference
@@ -1288,6 +1289,25 @@ function updateTray () {
     if (newTrayIconPath !== currentTrayIconPath) {
       appIcon.setImage(newTrayIconPath)
       currentTrayIconPath = newTrayIconPath
+    }
+
+    if (process.platform === 'darwin') {
+      const trayIconStyle = settings.get('trayIconStyle')
+      if (trayIconStyle === 'time') {
+        const isPaused = breakPlanner.isPaused ||
+          breakPlanner.dndManager.isOnDnd ||
+          breakPlanner.naturalBreaksManager.isSchedulerCleared ||
+          breakPlanner.appExclusionsManager.isSchedulerCleared
+        const reference = breakPlanner.scheduler.reference
+        const isOnBreak = reference === 'finishMicrobreak' || reference === 'finishBreak'
+        if (!isPaused && !isOnBreak) {
+          appIcon.setTitle(`${minutesRemaining(breakPlanner.timeToNextBreak)}`)
+        } else {
+          appIcon.setTitle('')
+        }
+      } else {
+        appIcon.setTitle('')
+      }
     }
 
     const newTrayMenuTemplate = getTrayMenuTemplate()
