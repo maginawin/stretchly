@@ -464,6 +464,7 @@
     "continue": "Jätka",
     "forHour": "1 tund",
     "indefinitely": "Määramata ajaks",
+    "pauseIndefinitely": "Peata määramata ajaks",
     "warning": "See taastab rakenduse vaikesätted ja kaotab kõik sinu seadistused.",
     "untilMorning": "Kuni hommikuni",
     "resume": "Jätka pausidega",

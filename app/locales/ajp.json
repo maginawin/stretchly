@@ -21,6 +21,7 @@
     "pause": "أوقف الإستراحة",
     "forHour": "ساعة",
     "indefinitely": "إلى أجل غير مسمى",
+    "pauseIndefinitely": "إيقاف مؤقت لأجل غير مسمى",
     "warning": "سيتم إستعادة الضبط الإفتراضي وستُفقد التفضيلات المخزنة.",
     "preferences": "التفضيلات",
     "contributorPreferences": "تفضيلات المساهم"

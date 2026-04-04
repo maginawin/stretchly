@@ -17,6 +17,7 @@
     "pause": "休憩を一時中断",
     "untilMorning": "朝まで",
     "indefinitely": "無期限",
+    "pauseIndefinitely": "無期限で一時停止",
     "quitStretchly": "Stretchlyを終了",
     "restoreDefaults": "デフォルトに戻す",
     "continue": "続ける",

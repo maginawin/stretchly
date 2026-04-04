@@ -71,6 +71,7 @@
     "microbreakIn": "Кратка пауза за $t(utils.seconds, {'count': {{seconds}} })",
     "untilMorning": "до јутра",
     "indefinitely": "до даљњег",
+    "pauseIndefinitely": "Пауза до даљњег",
     "continue": "Настави",
     "cancel": "Откажи"
   },

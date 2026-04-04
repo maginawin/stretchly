@@ -7,6 +7,7 @@
     "downloadLatestVersion": "تحميل أحدث إصدار",
     "toBreak": "استراحة طويلة",
     "toMicrobreak": "استراحة قصيرة",
-    "skipToTheNext": "تخطي إلى التالي"
+    "skipToTheNext": "تخطي إلى التالي",
+    "pauseIndefinitely": "إيقاف مؤقت لأجل غير مسمى"
   }
 }

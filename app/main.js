@@ -1363,28 +1363,6 @@ function getTrayMenuTemplate () {
     return trayMenu
   }
 
-  if (!(breakPlanner.isPaused || breakPlanner.dndManager.isOnDnd || breakPlanner.appExclusionsManager.isSchedulerCleared)) {
-    let submenu = []
-    if (settings.get('microbreak')) {
-      submenu = submenu.concat([{
-        label: i18next.t('main.toMicrobreak'),
-        click: () => skipToMicrobreak()
-      }])
-    }
-    if (settings.get('break')) {
-      submenu = submenu.concat([{
-        label: i18next.t('main.toBreak'),
-        click: () => skipToBreak()
-      }])
-    }
-    if (settings.get('break') || settings.get('microbreak')) {
-      trayMenu.push({
-        label: i18next.t('main.skipToTheNext'),
-        submenu
-      })
-    }
-  }
-
   if (breakPlanner.isPaused) {
     trayMenu.push({
       label: i18next.t('main.resume'),
@@ -1394,6 +1372,12 @@ function getTrayMenuTemplate () {
       }
     })
   } else if (!(breakPlanner.dndManager.isOnDnd || breakPlanner.appExclusionsManager.isSchedulerCleared)) {
+    trayMenu.push({
+      label: i18next.t('main.pauseIndefinitely'),
+      click: function () {
+        pauseBreaks(1)
+      }
+    })
     trayMenu.push({
       label: i18next.t('main.pause'),
       submenu: [
@@ -1437,7 +1421,20 @@ function getTrayMenuTemplate () {
           }
         }
       ]
-    }, {
+    })
+    if (settings.get('break')) {
+      trayMenu.push({
+        label: i18next.t('main.toBreak'),
+        click: () => skipToBreak()
+      })
+    }
+    if (settings.get('microbreak')) {
+      trayMenu.push({
+        label: i18next.t('main.toMicrobreak'),
+        click: () => skipToMicrobreak()
+      })
+    }
+    trayMenu.push({
       label: i18next.t('main.resetBreaks'),
       click: resetBreaks
     })

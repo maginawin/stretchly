@@ -14,6 +14,7 @@
     "microbreakIn": "$t(utils.seconds, {'count': {{seconds}} }) সেকেন্ডের মধ্যে ছোটো বিরতি",
     "toMicrobreak": "ছোটো বিরতি",
     "forHour": "এক ঘন্টা",
-    "indefinitely": "অনির্দিষ্ট কালের জন্যে"
+    "indefinitely": "অনির্দিষ্ট কালের জন্যে",
+    "pauseIndefinitely": "অনির্দিষ্ট কালের জন্যে বিরতি"
   }
 }
